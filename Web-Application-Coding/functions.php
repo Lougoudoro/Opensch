@@ -11,19 +11,22 @@ function MatriculAttrib()
 	$total_rows = $obj->Requete('SELECT COUNT(*) AS MAXI FROM etudiant');
 	$total_rows = $total_rows->fetch();
 	$total_rows = $total_rows['MAXI'];
+
 	//INCREMENTATION OF THE LAST ID
-	$last_id++;
 	$last_id = 999999;
-	$last_id++;
+	//$last_id++;
+
 	//SET OF THE NUMBER OF CHARACTERS OF THE $total_rows
 	$t_rows_len = strlen($last_id); 
 	//$t_rows_len = 8;
+
 	//SET OF THE MAXIMUM NUMBER OF ZERO
 	//we start to open the file containing the maximum of number in read and modifiy mode
 	$file = fopen('max.txt', 'r+');
 	//read and affecting the cntent of the file in the variable $max_zero
 	$max_zeros = fgets($file);
-	echo $max_zeros.'<br>';
+	//echo $max_zeros.'<br>';
+	
 	//CHECK THAT THE LENGTH OF THE NUMBER OF ROWS IS LESS OR EQUAL TO THE MAX OF ZEROS
 	if ($t_rows_len <= $max_zeros)
 	{
