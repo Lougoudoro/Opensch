@@ -3,21 +3,21 @@ include 'utilities/QueryBuilder.php';
 function MatriculAttrib()
 {
 	$obj = new QueryBuilder();
-	//SELECTION OF THE LAST ID
+	/*//SELECTION OF THE LAST ID
 	$last_id = $obj->Requete('SELECT * FROM etudiant ORDER BY ID_ETUDIANT DESC LIMIT 1');
 	$last_id = $last_id->fetch();
-	$last_id = $last_id['ID_ETUDIANT'];
+	$last_id = $last_id['ID_ETUDIANT'];*/
 	//SELECTION OF THE AMOUNT OF EXISTING ROWS
 	$total_rows = $obj->Requete('SELECT COUNT(*) AS MAXI FROM etudiant');
 	$total_rows = $total_rows->fetch();
 	$total_rows = $total_rows['MAXI'];
 
-	//INCREMENTATION OF THE LAST ID
-	$last_id = 999999;
-	//$last_id++;
+	//INCREMENTATION OF THE TOTAL ROW
+	$total_rows = 1010;
+	$total_rows++;
 
 	//SET OF THE NUMBER OF CHARACTERS OF THE $total_rows
-	$t_rows_len = strlen($last_id); 
+	$t_rows_len = strlen($total_rows); 
 	//$t_rows_len = 8;
 
 	//SET OF THE MAXIMUM NUMBER OF ZERO
@@ -35,7 +35,7 @@ function MatriculAttrib()
 		{ 
 			$matricul .= '0';
 		}
-		$matricul .= $last_id;
+		$matricul .= $total_rows;
 	}
 	//OTHERWISE, WE INCREMENT THE NUMBER OF ZEROS
 	else
@@ -52,7 +52,7 @@ function MatriculAttrib()
 			{ 
 				$matricul .= '0';
 			}
-			$matricul .= $last_id;
+			$matricul .= $total_rows;
 		//}
 	}
 	//we close the file
